@@ -6,38 +6,34 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Button from '@material-ui/core/Button'
-import { validateEmail } from '../../helpers'
+import Typography from '@material-ui/core/Typography'
 
 type BetaSignupDialogProps = {
     open: boolean,
-    handleClose: any
+    onClose: any,
+    onChange: any,
+    email: string,
+    error: string,
+    handleSignup: any,
+    submitting: boolean,
+    emailIsValid: boolean
 }
 
-export default function BetaSignupDialog({ open, handleClose, ...rest }: BetaSignupDialogProps) {
-
-    const [email, setEmail] = React.useState('')
-
-    async function handleSignup() {
-        // Otherwise try to signup the user
-    }
-
-    function handleInputChange(e: any) {
-        setEmail(e.target.value)
-    }
+export default function BetaSignupDialog({ open, onClose, onChange, email, error, handleSignup, emailIsValid, submitting, ...rest }: BetaSignupDialogProps) {
 
     return (
-        <Dialog open={open} onClose={handleClose} {...rest}>
+        <Dialog open={open} onClose={onClose} {...rest}>
             <DialogTitle id="form-dialog-title">
                 Beta Signup
             </DialogTitle>
 
             <DialogContent>
                 <DialogContentText>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi quod \
-                    incidunt pariatur a rem voluptate voluptas, iste rerum dolorem saepe \
-                    culpa quis accusamus voluptatem officia, aut odio aspernatur nostrum \
-                    necessitatibus.
+                    Be the first to know about all the cool services we're building, including a Doom wad API!
                 </DialogContentText>
+
+                {error && <Typography color="error">{error}</Typography>}
+
                 <TextField 
                     autoFocus
                     margin="dense"
@@ -45,15 +41,17 @@ export default function BetaSignupDialog({ open, handleClose, ...rest }: BetaSig
                     label="Email Address"
                     type="email"
                     fullWidth
-                    onChange={handleInputChange}
+                    onChange={onChange}
                     value={email}
+                    error={Boolean(error)}
                 />
+
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={onClose} color="primary">
                     Cancel
                 </Button>
-                <Button onClick={handleSignup} color="primary" disabled={!validateEmail(email)}>
+                <Button onClick={handleSignup} color="primary" disabled={!emailIsValid}>
                     Signup
                 </Button>
             </DialogActions>
