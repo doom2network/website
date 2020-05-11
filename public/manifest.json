@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Doom 2 Network",
+  "name": "Doom 2 Network",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64 48x48 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://doom2.network",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
