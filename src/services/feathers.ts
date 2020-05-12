@@ -5,7 +5,7 @@ import rest from '@feathersjs/rest-client'
 const client = feathers();
 
 const backend = process.env.NODE_ENV === 'production' 
-    ? 'https:/doom2.network/api/v1/'
+    ? 'https:/api.doom2.network'
     : 'http://localhost:9000';
 
 const restClient = rest(backend)
