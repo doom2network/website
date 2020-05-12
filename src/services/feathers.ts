@@ -4,7 +4,7 @@ import rest from '@feathersjs/rest-client'
 
 const client = feathers();
 
-const backend = 'https:/api.doom2.network:666'
+const backend = 'https://api.doom2.network:666'
 
 const restClient = rest(backend)
 
