@@ -30,11 +30,11 @@ export default function TopAppBar({ title }: TopAppBarProps) {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    {<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton>}
                     <Typography variant="h6" className={classes.title}>
-                        doom2network
+                        doom2.network
                     </Typography>
                 </Toolbar>
             </AppBar>
