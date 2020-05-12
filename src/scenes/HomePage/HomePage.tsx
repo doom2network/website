@@ -41,7 +41,7 @@ export default function HomePage(props: any) {
     async function betaSignup() {
         try {
             setSubmittingBetaForm(true)
-            const payload = { email: betaEmail }
+            const payload = { email: betaEmail, ipAddress: clientIpAddr || '' }
             const { _id } = await services.users.create(payload)
             if (_id) {
                 setHasSignedUp(true)
@@ -77,8 +77,8 @@ export default function HomePage(props: any) {
         try {
             // TODO: Add this to services instead
             const res = await fetch('https://api.doom2.network:666/ip')
-            const { IP: ip } = await res.json()
-            setClientIpAddr(ip)
+            const { IP } = await res.json()
+            setClientIpAddr(IP)
         } catch (error) {
             console.error(error)
         }
