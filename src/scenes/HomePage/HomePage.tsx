@@ -36,6 +36,7 @@ export default function HomePage(props: any) {
     const [hasSignedUp, setHasSignedUp]                 = React.useState(false)
     const [snackCtx, setSnackCtx]                       = React.useState<Color>('info')
     const [snackMsg, setSnackMsg]                       = React.useState('')
+    const [clientIpAddr, setClientIpAddr]               = React.useState('')
 
     async function betaSignup() {
         try {
@@ -71,6 +72,22 @@ export default function HomePage(props: any) {
     function closeSnack(e: any) {
         setSnackMsg('')
     }
+
+    async function getClientIpAddr() {
+        try {
+            // TODO: Add this to services instead
+            const res = await fetch('https://api.doom2.network:666/ip')
+            const { IP: ip } = await res.json()
+            setClientIpAddr(ip)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    React.useEffect(() => {
+        getClientIpAddr()
+    }, [] //run once
+    )
 
     return (
         <React.Fragment>
